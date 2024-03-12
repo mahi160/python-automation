@@ -57,3 +57,28 @@ python -m pip install -r requirements.txt
   tables.export('sample.csv', f='csv', compress=True)
   tables[0].to_csv('./samples/table_pdf.csv')
   ```
+
+### HTML & Xpath
+
+- **HTML** is the main building block of a website. It's the skeleton. It consists of different elements. They are called **tags**. Tags are used to write different part of a webpage. There are different types of tag.
+- Code:
+  ```html
+  <h1 class="a_class">A heading</h1>
+  <!-- Here <h1></h1> is a tag to define heading. class is called attribute. There can be multiple attributes.-->
+  ```
+- **XPath** is a way to indicate a specific tag. It starts with `//` in the beginning. Here are some examples. Try the [playground](https://scrapinghub.github.io/xpath-playground/)
+- Code:
+  ```sh
+  # this finds all h1 tags with 'class' attribute that _contains_ a_class
+  //h1[contains(@class, "a_class")] 
+  # this finds the first p tag
+  //p[1]
+  # this finds all the p tags with 'attribute' whose _value_ is a_class and returns the inner value of it by text()
+  //p[@class="a_class"].text()
+  # you can use and / or
+  //p[@class="a_class" or @class="b_class"]
+  # finds all the 'direct child' h1 of the tag main and return innerText
+  //main/h1/text()
+  # finds every h1 tag (direct child or more deep level) of main
+  //main//h1
+  ```
